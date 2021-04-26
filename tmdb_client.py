@@ -2,7 +2,7 @@ import requests
 import random
 import os
 
-api_token = os.environ.get("TMDB_api_token", "")
+api_token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNWMyMTZmODZhMDZjY2JkYWFjZWY0MWIxYzEyNzJkMiIsInN1YiI6IjYwNjk2OTUwMGMzZWM4MDA2ZTdmYmI2YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.8YbcrBZ9lclwMhTIrTcwFor_futjDkpcMV3hTsDSANw"
 
 def get_popular_movies():
     endpoint = "https://api.themoviedb.org/3/movie/popular"
