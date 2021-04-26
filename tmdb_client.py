@@ -1,6 +1,8 @@
 import requests
 import random
-api_token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNWMyMTZmODZhMDZjY2JkYWFjZWY0MWIxYzEyNzJkMiIsInN1YiI6IjYwNjk2OTUwMGMzZWM4MDA2ZTdmYmI2YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.8YbcrBZ9lclwMhTIrTcwFor_futjDkpcMV3hTsDSANw"
+import os
+
+api_token = os.environ.get("TMDB_api_token", "")
 
 def get_popular_movies():
     endpoint = "https://api.themoviedb.org/3/movie/popular"
@@ -52,6 +54,15 @@ def get_movie_images(movie_id):
     }
     response = requests.get(endpoint, headers=headers)
     return response.json()
+
+def call_tmdb_api(endpoint):
+   full_url = f"https://api.themoviedb.org/3/{endpoint}"
+   headers = {
+       "Authorization": f"Bearer {api_token}"
+   }
+   response = requests.get(full_url, headers=headers)
+   response.raise_for_status()
+   return response.json()
 
 
 
